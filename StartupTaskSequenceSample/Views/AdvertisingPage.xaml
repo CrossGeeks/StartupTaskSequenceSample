@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="http://xamarin.com/schemas/2020/toolkit"
+    x:Class="StartupTaskSequenceSample.Views.AdvertisingPage"
+    BackgroundColor="Black">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,Auto, *, Auto"
+              Padding="20,40">
+
+            <Label Text="This an advertising"
+                   TextColor="White"
+                   Grid.Row="0"/>
+
+            <Button BackgroundColor="{StaticResource AppPrimaryColor}"
+                    HorizontalOptions="Start"
+                    TextColor="White"
+                    Padding="20,0"
+                    Text="Remove advertisings"
+                    Command="{Binding NextCommand}"
+                    Grid.Row="1"/>
+
+            <views:MediaElement Source="https://sec.ch9.ms/ch9/5d93/a1eab4bf-3288-4faf-81c4-294402a85d93/XamarinShow_mid.mp4"
+                                ShowsPlaybackControls="False"
+                                Grid.Row="2"
+                                AutoPlay="True"/>
+
+              <Button BackgroundColor="Transparent"
+                      HorizontalOptions="EndAndExpand"
+                      TextColor="White"
+                      Text="Skip"
+                      Command="{Binding NextCommand}"
+                      Grid.Row="3"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

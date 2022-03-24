@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StartupTaskSequenceSample.Views.LoginPage">
+    <ScrollView>
+        <StackLayout Padding="20,0,20,20">
+            <Label Text=" Login"
+                   FontSize="Title"
+                   Padding="50"
+                   HorizontalTextAlignment="Center"
+                   TextColor="White"
+                   Margin="-20,0"
+                   BackgroundColor="{StaticResource AppPrimaryColor}"/>
+
+            <Label Text="♜"
+                  TextColor="Black"
+                  HorizontalOptions="CenterAndExpand"
+                  FontSize="100"/>
+
+            <Label Text="User"
+                   TextColor="Black"/>
+            <Entry Keyboard="Email"/>
+
+            <Label Text="Password"
+                   TextColor="Black"/>
+
+             <Entry IsPassword="True"/>
+
+             <Button Style="{StaticResource MainButtonStyle}"
+                    Text="Login"
+                    Command="{Binding NextCommand}"/>
+
+             <Button BackgroundColor="Transparent"
+                     HorizontalOptions="Center"
+                     TextColor="Black"
+                     Text="Register"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StartupTaskSequenceSample.Views.OnboardingPage">
+
+    <Grid RowDefinitions="Auto, Auto, *, Auto, Auto"
+          Padding="20,40">
+
+          <Label Text="Welcome"
+                 FontSize="Title"
+                 Grid.Row="0"/>
+
+            <Button Grid.Row="1"
+                    HorizontalOptions="EndAndExpand"
+                    Margin="0,0,20,0"
+                    FontSize="Medium"
+                    FontAttributes="Bold"
+                    BackgroundColor="Transparent"
+                    Text="Skip"
+                    TextColor="Black"
+                    Command="{Binding NextCommand}"/>
+
+            <CarouselView x:Name="onBoardingCarousel"
+                          VerticalScrollBarVisibility="Never"
+                          HorizontalScrollBarVisibility="Never"
+                          Grid.Row="2"                          
+                          VerticalOptions="Center">
+                <CarouselView.ItemsSource>
+                     <x:Array  Type="{x:Type x:String}">
+                        <x:String>https://puu.sh/IQy6q/a69425817f.png</x:String>
+                         <x:String>https://puu.sh/IQy6z/c2e2b2e75c.png</x:String>
+                         <x:String>https://puu.sh/IQy7A/c778b26f91.png</x:String>
+                    </x:Array>
+                </CarouselView.ItemsSource>
+                 <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                        <FlexLayout Direction="Column"
+                                    JustifyContent="SpaceEvenly">
+                                <Image                                  
+                                       Source="{Binding .}"
+                                       Aspect="AspectFill"
+                                       WidthRequest="300" 
+                                       FlexLayout.AlignSelf="Center"/>
+
+                                <Label Text="Lorem ipsum dolor sit amet"
+                                       FontAttributes="Bold"
+                                       FontSize="Title" />
+                            
+                                <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mi lectus, malesuada sed metus sit amet, egestas elementum nunc. Etiam non lorem erat."
+                                       FontSize="Body"/>                     
+                            </FlexLayout>
+                            </ContentView>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <IndicatorView
+                    ItemsSource="{Binding Source={x:Reference onBoardingCarousel}, Path=ItemsSource}"
+                    Position="{Binding Source={x:Reference onBoardingCarousel}, Path=Position}"
+                    Grid.Row="3"
+                    IndicatorsShape="Circle"
+                    SelectedIndicatorColor="{StaticResource AppPrimaryColor}"
+                    IndicatorColor="DarkGray"
+                    HorizontalOptions="Center"/>
+
+        <Button Grid.Row="4"
+                Style="{StaticResource MainButtonStyle}"
+                Text="Next"
+                Command="{Binding NextCommand}"
+                IsVisible="False">
+            <Button.Triggers>
+                <DataTrigger TargetType="Button"
+                             Binding="{Binding Source={x:Reference onBoardingCarousel},
+                                               Path=Position}"
+                             Value="2">
+                    <Setter Property="IsVisible" Value="True" />
+                </DataTrigger>
+            </Button.Triggers>
+        </Button>
+        </Grid>
+</ContentPage>

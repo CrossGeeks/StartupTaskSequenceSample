@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StartupTaskSequenceSample.Views.SplashPage"
+    BackgroundColor="{StaticResource AppPrimaryColor}">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     Spacing="30">
+
+         
+           <Label Text="♜"
+                  TextColor="White"
+                  HorizontalOptions="CenterAndExpand"
+                  FontSize="100"/>
+
+            <Label Text="My App"
+                  TextColor="White"
+                  HorizontalOptions="CenterAndExpand"
+                  FontSize="30"/>
+
+            <ActivityIndicator Color="White"
+                               IsRunning="True"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="StartupTaskSequenceSample.Views.HomePage">
+    <NavigationPage Title="Home">
+        <x:Arguments>
+            <ContentPage Title="Dashaboard">
+                <StackLayout>
+                    <Label Text=" ♜"
+                       FontSize="Title"
+                       Padding="0,40,0,10"
+                       HorizontalTextAlignment="Center"
+                       TextColor="Black"/>
+
+                     <Label Text="My App"
+                       FontSize="Title"
+                       Padding="0,0,0,40"
+                       HorizontalTextAlignment="Center"
+                       TextColor="Black"/>
+
+                    <Grid RowDefinitions="*, *"
+                          ColumnDefinitions="*,*"
+                          VerticalOptions="FillAndExpand"
+                          Padding="20">
+                        <StackLayout Grid.Column="0"
+                                     Grid.Row="0"
+                                     BackgroundColor="{StaticResource AppPrimaryColor}"
+                                     Padding="40">
+                             <Label Text="✚"
+                                    FontSize="40"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="Center"
+                                    TextColor="White"/>
+                            <Label Text="Lean"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="Center"
+                                   TextColor="White"/>
+                        </StackLayout>
+
+                          <StackLayout Grid.Column="1"
+                                     Grid.Row="0"
+                                     BackgroundColor="Gray"
+                                     Padding="40">
+                             <Label Text="●"
+                                    FontSize="40"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="Center"
+                                    TextColor="White"/>
+                            <Label Text="Support"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="Center"
+                                   TextColor="White"/>
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="0"
+                                     Grid.Row="1"
+                                     BackgroundColor="Gray"
+                                     Padding="40">
+                             <Label Text="♞"
+                                    FontSize="40"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="Center"
+                                    TextColor="White"/>
+                            <Label Text="Events"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="Center"
+                                   TextColor="White"/>
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="1"
+                                     Grid.Row="1"
+                                     BackgroundColor="{StaticResource AppPrimaryColor}"
+                                     Padding="40">
+                             <Label Text="✉"
+                                    FontSize="40"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="CenterAndExpand"
+                                    TextColor="White"/>
+                            <Label Text="Contact"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand"
+                                   TextColor="White"/>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </ContentPage>
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Schedule">
+        <x:Arguments>
+            <ContentPage/>
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>

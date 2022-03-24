@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="StartupTaskSequenceSample.Views.PermissionRequestPage">
+      <StackLayout Spacing="30"
+                     Padding="30">
+            <Image Source="https://png.monster/wp-content/uploads/2021/06/png.monster-10.png"
+                   VerticalOptions="CenterAndExpand"
+                   HeightRequest="300"
+                   HorizontalOptions="FillAndExpand"/>
+
+              <Label Text="Location permission needed"
+                     FontAttributes="Bold"
+                   TextColor="#3C2820"
+                   FontSize="Large"
+                   HorizontalTextAlignment="Center"/>
+
+            <Label Text="This app needs access to your location, which is required for showing nearby places while you are driving. If you don't feel comfortable with this permission, you can go to settings and modify it at any time."
+                   TextColor="#3C2820"
+                   FontSize="Large"
+                   HorizontalTextAlignment="Center"/>
+
+             <Button Text="Turn on"
+                     Margin="10,0"
+                     VerticalOptions="EndAndExpand"
+                     Command="{Binding RequestPermissionCommand}"
+                     CornerRadius="20"
+                     FontSize="20"
+                     TextColor="White"
+                     BackgroundColor="{StaticResource AppPrimaryColor}" />
+        </StackLayout>
+</ContentPage>
