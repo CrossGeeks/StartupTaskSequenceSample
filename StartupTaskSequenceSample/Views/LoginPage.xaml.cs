@@ -3,15 +3,16 @@ using Xamarin.Forms;
 
 namespace StartupTaskSequenceSample.Views
 {
-    public partial class LoginPage : ContentPage
+    public partial class LoginPage : StartupPage
     {
         public ICommand NextCommand { get; }
-        public LoginPage()
+
+        public LoginPage() : base()
         {
             InitializeComponent();
-            NextCommand = new Command(async () =>
+            NextCommand = new Command(async() =>
             {
-                await Navigation.PushModalAsync(new AdvertisingPage(), false);
+                await CompleteAsync();
             });
 
             BindingContext = this;

@@ -4,7 +4,7 @@
             x:Class="StartupTaskSequenceSample.Views.HomePage">
     <NavigationPage Title="Home">
         <x:Arguments>
-            <ContentPage Title="Dashaboard">
+            <ContentPage Title="Dashboard">
                 <StackLayout>
                     <Label Text=" ♜"
                        FontSize="Title"

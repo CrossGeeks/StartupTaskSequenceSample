@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace StartupTaskSequenceSample.Views
 {
-    public partial class OnboardingPage : ContentPage
+    public partial class OnboardingPage : StartupPage
     {
         public ICommand NextCommand { get; }
         public OnboardingPage()
@@ -11,7 +11,7 @@ namespace StartupTaskSequenceSample.Views
             InitializeComponent();
             NextCommand = new Command(async() =>
             {
-                await Navigation.PushModalAsync(new PermissionRequestPage(), false);
+                await CompleteAsync();
             });
 
             BindingContext = this;

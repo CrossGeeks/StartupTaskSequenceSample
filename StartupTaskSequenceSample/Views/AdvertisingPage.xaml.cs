@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace StartupTaskSequenceSample.Views
 {
-    public partial class AdvertisingPage : ContentPage
+    public partial class AdvertisingPage : StartupPage
     {
         public ICommand NextCommand { get; }
         public AdvertisingPage()
@@ -11,7 +11,7 @@ namespace StartupTaskSequenceSample.Views
             InitializeComponent();
             NextCommand = new Command(async () =>
             {
-                await Navigation.PushModalAsync(new HomePage(), false);
+                await CompleteAsync();
             });
 
             BindingContext = this;

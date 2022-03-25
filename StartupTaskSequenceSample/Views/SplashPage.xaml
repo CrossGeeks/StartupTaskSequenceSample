@@ -7,8 +7,6 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand"
                      Spacing="30">
-
-         
            <Label Text="♜"
                   TextColor="White"
                   HorizontalOptions="CenterAndExpand"

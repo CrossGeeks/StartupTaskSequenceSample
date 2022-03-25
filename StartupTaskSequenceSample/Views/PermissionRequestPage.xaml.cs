@@ -5,10 +5,10 @@ using Xamarin.Forms;
 
 namespace StartupTaskSequenceSample.Views
 {
-    public partial class PermissionRequestPage : ContentPage
+    public partial class PermissionRequestPage : StartupPage
     {
         public ICommand RequestPermissionCommand { get; }
-        public PermissionRequestPage()
+        public PermissionRequestPage() : base()
         {
             InitializeComponent();
 
@@ -19,13 +19,17 @@ namespace StartupTaskSequenceSample.Views
 
         async Task RequestPermissionAsync()
         {
+            await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+
+            await CompleteAsync();
+            // await Navigation.PushModalAsync(new LoginPage(), false);
+        }
+
+        protected override async Task<bool> CanRunAsync()
+        {
             var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
 
-            if (status != PermissionStatus.Granted)
-            {
-                await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
-            }
-            await Navigation.PushModalAsync(new LoginPage(), false);
+            return (status == PermissionStatus.Unknown || status == PermissionStatus.Restricted);
         }
     }
 }

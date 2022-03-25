@@ -19,8 +19,12 @@
     <None Remove="Views\" />
     <None Remove="Xamarin.CommunityToolkit" />
     <None Remove="Xam.Plugin.LatestVersion" />
+    <None Remove="Startup\" />
+    <None Remove="Startup\Tasks\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
+    <Folder Include="Startup\" />
+    <Folder Include="Startup\Tasks\" />
   </ItemGroup>
 </Project>

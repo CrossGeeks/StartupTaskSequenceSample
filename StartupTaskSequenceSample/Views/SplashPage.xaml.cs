@@ -1,27 +1,33 @@
-﻿using System.Threading.Tasks;
+﻿using StartupTaskSequenceSample.Startup;
+using StartupTaskSequenceSample.Startup.Tasks;
 using Xamarin.Forms;
 
 namespace StartupTaskSequenceSample.Views
 {
     public partial class SplashPage : ContentPage
     {
+        IStartupTaskSequencer sequencer;
+
         public SplashPage()
         {
             InitializeComponent();
-            LoadNextPage();
+
+            sequencer = new StartupTaskBuilder()
+                               .Add(new SimulateDownloadDataStartupTask())
+                               .Add(new UpdateVersionStartupTask())
+                               .Add(new OnboardingPage())
+                               .Add(new PermissionRequestPage())
+                               .Add(new LoginPage())
+                               .Add(new AdvertisingPage())
+                               .Add(new HomePage())
+                               .Build();
         }
 
-        async Task LoadNextPage()
+        protected override async void OnAppearing()
         {
-            await Task.Delay(5000);
-            await UpdateAppVersion();
-            await Navigation.PushModalAsync(new OnboardingPage(), false);
-        }
+            base.OnAppearing();
 
-        private async Task UpdateAppVersion()
-        {
-            //TODO: Do Store version code here, can't do it since this app is not in the store
-            await DisplayAlert("New Version", "There is a new version of this app available. Would you like to update now?", "Yes", "No");
+            await sequencer.StartAsync();
         }
     }
 }

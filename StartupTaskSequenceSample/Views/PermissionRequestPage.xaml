@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
+<views:StartupPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:StartupTaskSequenceSample.Views"
     x:Class="StartupTaskSequenceSample.Views.PermissionRequestPage">
       <StackLayout Spacing="30"
                      Padding="30">
@@ -30,4 +31,4 @@
                      TextColor="White"
                      BackgroundColor="{StaticResource AppPrimaryColor}" />
         </StackLayout>
-</ContentPage>
+</views:StartupPage>
