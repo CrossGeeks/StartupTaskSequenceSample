@@ -5,4 +5,4 @@
 </p>
 
 
-Check the full article [here.](xamboy.com/)
+Check the full article [here.](https://www.xamboy.com/2022/03/26/building-a-task-sequence-in-xamarin-forms-maui-part-1/)
