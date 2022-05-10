@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace StartupTaskSequenceSample.Views
@@ -16,5 +17,7 @@ namespace StartupTaskSequenceSample.Views
 
             BindingContext = this;
         }
+
+        protected override Task<bool> CanRunAsync() => Task.FromResult(App.VersionType == VersionType.Free);
     }
 }

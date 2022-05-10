@@ -6,6 +6,6 @@ namespace StartupTaskSequenceSample.Startup.Tasks
     {
         Task<bool> CanRunAsync();
 
-        Task RunAsync();
+        Task<IStartupTaskParameters> RunAsync(IStartupTaskParameters parameters);
     }
 }

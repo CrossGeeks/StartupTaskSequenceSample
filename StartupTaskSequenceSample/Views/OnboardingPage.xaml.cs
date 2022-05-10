@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using StartupTaskSequenceSample.Startup.Tasks;
 using Xamarin.Forms;
 
 namespace StartupTaskSequenceSample.Views

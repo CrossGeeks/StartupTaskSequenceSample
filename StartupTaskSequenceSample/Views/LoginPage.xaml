@@ -21,7 +21,7 @@
 
             <Label Text="User"
                    TextColor="Black"/>
-            <Entry Keyboard="Email"/>
+            <Entry Keyboard="Email" x:Name="userNameEntry"/>
 
             <Label Text="Password"
                    TextColor="Black"/>

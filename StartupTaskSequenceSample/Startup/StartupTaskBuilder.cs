@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using StartupTaskSequenceSample.Startup.Tasks;
 
@@ -25,16 +26,20 @@ namespace StartupTaskSequenceSample.Startup
         {
             public StartupTaskSequencer(Queue<IStartupTask> tasks) => _tasks = tasks;
 
-            public async Task StartAsync()
+            public async Task StartAsync(IStartupTask task, IStartupTaskParameters parameters = null)
             {
-                foreach(var next in _tasks)
+                parameters ??= StartupTaskParameters.None;
+
+                foreach (var next in _tasks.SkipWhile(x => x != task))
                 {
                     if (await next.CanRunAsync())
                     {
-                       await next.RunAsync();
+                        parameters = await next.RunAsync(parameters);
                     }
                 }
             }
+
+            public Task StartAsync() => StartAsync(_tasks.FirstOrDefault());
 
             private readonly Queue<IStartupTask> _tasks;
         }

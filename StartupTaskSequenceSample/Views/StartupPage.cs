@@ -8,25 +8,32 @@ namespace StartupTaskSequenceSample.Views
     {
         protected virtual Task<bool> CanRunAsync() => Task.FromResult(true);
 
-        protected async Task CompleteAsync()
+        protected async Task CompleteAsync(IStartupTaskParameters parameters = null)
         {
             await Navigation.PopModalAsync(false);
 
-            _tcs?.SetResult(true);
+            _tcs?.SetResult(parameters ?? StartupTaskParameters.None);
 
         }
 
         Task<bool> IStartupTask.CanRunAsync() => CanRunAsync();
 
-        async Task IStartupTask.RunAsync()
+        protected virtual Task OnStartAsync(IStartupTaskParameters parameters)
         {
-            _tcs = new TaskCompletionSource<bool>();
+            return Task.CompletedTask;
+        }
+
+        async Task<IStartupTaskParameters> IStartupTask.RunAsync(IStartupTaskParameters parameters)
+        {
+            _tcs = new TaskCompletionSource<IStartupTaskParameters>();
+
+            await OnStartAsync(parameters);
 
             await App.Current.MainPage.Navigation.PushModalAsync(this);
 
-            await _tcs.Task;
+            return await _tcs.Task;
         }
 
-        private TaskCompletionSource<bool> _tcs;
+        private TaskCompletionSource<IStartupTaskParameters> _tcs;
     }
 }

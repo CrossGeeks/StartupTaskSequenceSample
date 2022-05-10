@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using StartupTaskSequenceSample.Startup.Tasks;
 using Xamarin.Forms;
 
 namespace StartupTaskSequenceSample.Views
@@ -12,7 +13,10 @@ namespace StartupTaskSequenceSample.Views
             InitializeComponent();
             NextCommand = new Command(async() =>
             {
-                await CompleteAsync();
+                await CompleteAsync(new StartupTaskParameters()
+                {
+                    {"Name" , userNameEntry.Text }
+                });
             });
 
             BindingContext = this;

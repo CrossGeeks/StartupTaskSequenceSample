@@ -7,6 +7,11 @@ namespace StartupTaskSequenceSample.Startup.Tasks
     {
         public Task<bool> CanRunAsync() => Task.FromResult(true);
 
-        public Task RunAsync() => Task.Delay(5000);
+        public async Task<IStartupTaskParameters> RunAsync(IStartupTaskParameters parameters)
+        {
+            await Task.Delay(5000);
+
+            return StartupTaskParameters.None;
+        }
     }
 }

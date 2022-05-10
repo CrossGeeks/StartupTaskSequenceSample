@@ -7,6 +7,7 @@ namespace StartupTaskSequenceSample.Views
     public partial class SplashPage : ContentPage
     {
         IStartupTaskSequencer sequencer;
+        HomePage homePage = new HomePage();
 
         public SplashPage()
         {
@@ -19,13 +20,16 @@ namespace StartupTaskSequenceSample.Views
                                .Add(new PermissionRequestPage())
                                .Add(new LoginPage())
                                .Add(new AdvertisingPage())
-                               .Add(new HomePage())
+                               .Add(homePage)
                                .Build();
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
+
+            //Uncomment this line to start in Home page
+            //await sequencer.StartAsync(homePage);
 
             await sequencer.StartAsync();
         }
